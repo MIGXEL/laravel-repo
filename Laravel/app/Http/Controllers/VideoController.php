@@ -25,14 +25,14 @@ class VideoController extends Controller
             'title'        => 'required|min:5',
             'description'   => 'required',
             'image'         => 'mimes:jpeg,jpg,png',
-            'video'         => 'mimes:mp4'
+            /* 'video'         => 'mimes:mp4,wmv' */
         ]);
 
         $video = new Video();
         $user = \Auth::user();
         $video->user_id = $user->id;
         $video->title = $request->input('title');
-        $video->descripcion = $request->input('decription');
+        $video->description = $request->input('decription');
 
         $video->save();
 

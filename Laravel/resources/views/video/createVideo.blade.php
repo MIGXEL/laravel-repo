@@ -27,11 +27,11 @@
                     <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="image">Titulo</label>
+                    <label for="image">Portada</label>
                     <input type="file" name="image" id="image" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="video">Titulo</label>
+                    <label for="video">Video</label>
                     <input type="file" name="video" id="video" class="form-control">
                 </div>
 
