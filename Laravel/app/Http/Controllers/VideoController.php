@@ -25,14 +25,35 @@ class VideoController extends Controller
             'title'        => 'required|min:5',
             'description'   => 'required',
             'image'         => 'mimes:jpeg,jpg,png',
-            /* 'video'         => 'mimes:mp4,wmv' */
+            'video'         => 'mimes:mp4,wmv'
         ]);
 
         $video = new Video();
         $user = \Auth::user();
         $video->user_id = $user->id;
         $video->title = $request->input('title');
-        $video->description = $request->input('decription');
+        $video->description = $request->input('description');
+
+
+        //Subida de la miniatura
+
+        $image = $request->file('image');
+        if($image){
+            $image_path = time().$image->getClientOriginalName();
+            \Storage::disk('images')->put($image_path, \File::get($image));
+
+            $video->image = $image_path;
+        }
+
+        //Subida del Video
+        $video_file = $request->file('video');
+        if($video_file){
+            $video_path = time().$video_file->getClientOriginalName();
+            \Storage::disk('videos')->put($video_path, \File::get($video_file));
+
+            $video->video_path = $video_path;
+        }
+
 
         $video->save();
 
