@@ -61,6 +61,19 @@ class VideoController extends Controller
             'message' => 'Video subido correctamente'
         ));
 
-
+        
+        
+        
+        
+        
+    }
+    
+    //Metodo para obtener la imagen
+    public function getImage($filename){
+    
+        $file = Storage::disk('images')->get($filename);
+    
+        return new Response($file, 200);
+    
     }
 }
