@@ -10,17 +10,20 @@
                 </div>
             @endif
 
-            <ul class="row" id="videos-list">
-                @foreach($videos as $video)
-                    <li class="video-item col-md-4">
-                        <!--imagen del video-->
-
-                        <div class="data">
+            <div class="row">
+                <div class="col-4">
+                    @foreach($videos as $video)
+                    <div class="card" style="width: 18rem;">
+                        @if(Storage::disk('images')->has($video->image))
+                        <img src="{{url('/miniatura/'.$video->image)}}" class="card-img-top" alt="...">
+                        @endif
+                        <div class="card-body">
                             <h4>{{ $video->title }}</h4>
                         </div>
-                    </li>
-                @endforeach
-            </ul>
+                    </div>
+                    @endforeach                
+                </div>
+            </div>
         </div>
 
         {{ $videos->links() }}

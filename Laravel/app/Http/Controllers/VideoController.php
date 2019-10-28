@@ -71,9 +71,9 @@ class VideoController extends Controller
     //Metodo para obtener la imagen
     public function getImage($filename){
     
-        $file = Storage::disk('images')->get($filename);
+        $file = \Storage::disk('images')->get($filename);
     
-        return new Response($file, 200);
+        return $file;
     
     }
 }
