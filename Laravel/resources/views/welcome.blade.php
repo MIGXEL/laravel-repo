@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -20,51 +21,47 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
+            
 
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                z-index: 3;
             }
 
             .position-ref {
-                position: relative;
+                position: absolute;
+                width:100%;
             }
 
             .top-right {
-                position: absolute;
-                right: 10px;
                 top: 18px;
-            }
+                background: rgba(0,0,0,.5);
+                padding: 10px;
+                width: 100%;
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #ff502f;
                 padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
+                font-size: 20px;
+                font-weight: bold;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                border-bottom: 1.5px solid rgba(0,0,0,0);
+                transition: .3s;
+            }
+            .links > a:hover{
+                border-bottom: 1.5px solid #ff502f;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref av-nav">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,13 +75,58 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
+            <!-- <div class="content">
                 <div class="title m-b-md">
-                {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Laravel') }}
+                 </div>
+                 <hr>
+            </div> -->
+
+        </div>
+    <div class="banner">
+        
+
+
+
+        <div class="column active">
+            <div class="bg">
+                <img src="img/bg1.jpg" alt="">
+                <div class="title m-b-md">
+                    {{ config('app.name', 'Laravel') }}
                 </div>
-                <hr>
             </div>
         </div>
+        <div class="column">
+            <div class="bg">
+                <img src="img/bg2.jpg" alt="">
+                <div class="title m-b-md">
+                    {{ config('app.name', 'Laravel') }}
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="bg">
+                <img src="img/bg3.jpg" alt="">
+                <div class="title m-b-md">
+                    {{ config('app.name', 'Laravel') }}
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="bg">
+                <img src="img/bg4.jpg" alt="">
+                <div class="title m-b-md">
+                    {{ config('app.name', 'Laravel') }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('mouseover', '.column', function() {
+            $(this).addClass('active').siblings().removeClass('active');
+        })
+    </script>
     </body>
 </html>
